@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>GOTCH!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="./favicon.ico"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-toast@2.4.2/dist/bulma-toast.min.js"></script>
+
+</head>
+<body>
+<div class="container" style="max-width: 700px;">
+    <p class="title is-3 is-unselectable">GOTCH!</p>
+
+    <div class="box">
+        <div class="field is-horizontal">
+            <p class="image is-64x64"><img src="https://arweave.net/eW1ixv6Kz17K8Lly1V5g_c6u4YdPt5gwPwayxpmdjIU?ext=gif"/></p>
+            <div class="buttons" style="margin-left: auto">
+                <button id="bCreate1" class="button is-primary">Create</button>
+                <button id="bFreeze1" class="button is-link">(Un)Freeze</button>
+                <button id="bFeed1" class="button is-success">Feed</button>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Strength</label>
+            </div>
+            <div class="field-body">
+                <input id="prStrength1" class="input" type="text" disabled="" placeholder=""/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Dexterity</label>
+            </div>
+            <div class="field-body">
+                <input id="prDexterity1" class="input" type="text" disabled="" placeholder=""/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Stamina</label>
+            </div>
+            <div class="field-body">
+                <input id="prStamina1" class="input" type="text" disabled="" placeholder=""/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Intellect</label>
+            </div>
+            <div class="field-body">
+                <input id="prIntellect1" class="input" type="text" disabled="" placeholder=""/>
+            </div>
+        </div>
+        <hr/>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Energy</label>
+            </div>
+            <div class="field-body">
+                <input id="prFood1" class="input" type="text" disabled="" placeholder=""/>
+            </div>
+        </div>
+        <hr/>
+        <div class="field is-horizontal">
+            <label class="checkbox mr-5"><input id="prFreeze1" type="checkbox" disabled=""/><b class="ml-2">Frozen</b></label>
+            <label class="checkbox"><input id="prDead1" type="checkbox" disabled=""/><b class="ml-2">Dead</b></label>
+        </div>
+    </div>
+    
+    
+    
+<div id="mFeed" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head has-background-link-light">
+            <p class="modal-card-title">Feed</p>
+            <button id="bFeedClose" class="delete" onclick="document.getElementById('mFeed').classList.remove('is-active');"></button>
+        </header>
+        <div class="modal-card-body">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Food:</label>
+                </div>
+                <div class="field-body">
+                    <div class="control" style="width: 100%">
+                        <input id="iFood" class="input" type="text" placeholder="0.0" value="1"
+                               onkeypress="if (isNaN(this.value + String.fromCharCode(event.keyCode))) return false;"/>
+                    </div>
+                </div>
+            </div>
+            <small class="has-text-grey-light is-pulled-right">1 food = 1 minute pet life</small>
+        </div>
+        <footer class="modal-card-foot has-background-link-light">
+            <div style="margin-left: auto">
+                <button id="bFeedFeed" class="button is-info">Feed</button>
+                <button class="button" onclick="document.getElementById('mFeed').classList.remove('is-active');">Cancel</button>
+            </div>
+        </footer>
+    </div>
+</div>
+    
+</div>    
+<script type="module" src="./index.js"></script>
+</body>
+</html>
