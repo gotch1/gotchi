@@ -8,8 +8,10 @@
     <link rel="icon" href="./favicon.ico"/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/css/bulma-slider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/js/bulma-slider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bulma-toast@2.4.2/dist/bulma-toast.min.js"></script>
 
 </head>
@@ -21,9 +23,8 @@
         <div class="field is-horizontal">
             <p class="image is-64x64"><img src="https://arweave.net/eW1ixv6Kz17K8Lly1V5g_c6u4YdPt5gwPwayxpmdjIU?ext=gif"/></p>
             <div class="buttons" style="margin-left: auto">
-                <button id="bCreate1" class="button is-primary">Create</button>
-                <button id="bFreeze1" class="button is-link">(Un)Freeze</button>
-                <button id="bFeed1" class="button is-success">Feed</button>
+                <button id="bCreate1" class="button is-success is-light">Create</button>
+                <button id="bFreeze1" class="button is-link is-light">(Un)Freeze</button>
             </div>
         </div>
         <div class="field is-horizontal">
@@ -58,13 +59,51 @@
                 <input id="prIntellect1" class="input" type="text" disabled="" placeholder=""/>
             </div>
         </div>
+        
         <hr/>
+        
+        <div class="field is-horizontal">
+            <div class="buttons" style="margin-left: auto">
+                <button id="bFeed1" class="button is-success">Feed</button>
+                <button id="bPlay1" class="button is-primary">Play</button>
+                <button id="bWash1" class="button is-link">Wash</button>
+                <button id="bSleep1" class="button is-info">Go to bed</button>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Food</label>
+            </div>
+            <div class="field-body">
+                <input id="slFood" class="slider is-fullwidth is-success" step="1" min="0" max="100" value="0" type="range"/>
+                <!--<input id="prFood1" class="input" type="text" disabled="" placeholder=""/>-->
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Fun</label>
+            </div>
+            <div class="field-body">
+                <input id="slFun" class="slider is-fullwidth is-primary" step="1" min="0" max="100" value="0" type="range"/>
+                <!--<input id="prFun1" class="input" type="text" disabled="" placeholder=""/>-->
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Hygiene</label>
+            </div>
+            <div class="field-body">
+                <input id="slHygiene" class="slider is-fullwidth is-link" step="1" min="0" max="100" value="0" type="range"/>
+                <!--<input id="prHygiene1" class="input" type="text" disabled="" placeholder=""/>-->
+            </div>
+        </div>
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Energy</label>
             </div>
             <div class="field-body">
-                <input id="prFood1" class="input" type="text" disabled="" placeholder=""/>
+                <input id="slEnergy" class="slider is-fullwidth is-info" step="1" min="0" max="100" value="0" type="range"/>
+                <!--<input id="prEnergy1" class="input" type="text" disabled="" placeholder=""/>-->
             </div>
         </div>
         <hr/>
@@ -95,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <small class="has-text-grey-light is-pulled-right">1 food = 1 minute pet life</small>
+            <small class="has-text-grey-light is-pulled-right">1 food = 1 second pet life</small>
         </div>
         <footer class="modal-card-foot has-background-link-light">
             <div style="margin-left: auto">
@@ -105,6 +144,68 @@
         </footer>
     </div>
 </div>
+
+<div id="mPlay" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head has-background-link-light">
+            <p class="modal-card-title">Play</p>
+            <button id="bPlayClose" class="delete" onclick="document.getElementById('mPlay').classList.remove('is-active');"></button>
+        </header>
+        <div class="modal-card-body">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Play:</label>
+                </div>
+                <div class="field-body">
+                    <div class="control" style="width: 100%">
+                        <input id="iPlay" class="input" type="text" placeholder="0.0" value="1"
+                               onkeypress="if (isNaN(this.value + String.fromCharCode(event.keyCode))) return false;"/>
+                    </div>
+                </div>
+            </div>
+            <small class="has-text-grey-light is-pulled-right">1 play = 1 second pet fun</small>
+        </div>
+        <footer class="modal-card-foot has-background-link-light">
+            <div style="margin-left: auto">
+                <button id="bPlayPlay" class="button is-info">Play</button>
+                <button class="button" onclick="document.getElementById('mPlay').classList.remove('is-active');">Cancel</button>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<div id="mSleep" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head has-background-link-light">
+            <p class="modal-card-title">Sleep</p>
+            <button id="bSleepClose" class="delete" onclick="document.getElementById('mSleep').classList.remove('is-active');"></button>
+        </header>
+        <div class="modal-card-body">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Go to bed:</label>
+                </div>
+                <div class="field-body">
+                    <div class="control" style="width: 100%">
+                        <input id="iSleep" class="input" type="text" placeholder="0.0" value="1"
+                               onkeypress="if (isNaN(this.value + String.fromCharCode(event.keyCode))) return false;"/>
+                    </div>
+                </div>
+            </div>
+            <small class="has-text-grey-light is-pulled-right">1 sleep = 1 second pet energy</small>
+        </div>
+        <footer class="modal-card-foot has-background-link-light">
+            <div style="margin-left: auto">
+                <button id="bSleepSleep" class="button is-info">Go to bed</button>
+                <button class="button" onclick="document.getElementById('mSleep').classList.remove('is-active');">Cancel</button>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
     
 </div>    
 <script type="module" src="./index.js"></script>
